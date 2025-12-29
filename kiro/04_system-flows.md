@@ -265,9 +265,9 @@ Focus: Operational reality, not design theory. Performance characteristics, not 
 - Clear progress tracking and user feedback
 
 **Performance Targets:**
-- Small repos (< 100 files): 15-30 seconds
-- Medium repos (100-1000 files): 30-90 seconds
-- Large repos (1000+ files): 90-300 seconds
+- Small repos (< 100 files): 20-120 seconds
+- Medium repos (100-1000 files): 120-300 seconds
+- Large repos (1000+ files): 300-1200 seconds
 
 ### User Interface Responsiveness
 
