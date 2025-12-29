@@ -1,6 +1,7 @@
 package main
 
 import (
+	controller "github.com/1107-adishjain/codemap/internal/controller"
 	mw "github.com/1107-adishjain/codemap/internal/middleware"
 	"database/sql"
 	"net/http"
@@ -30,6 +31,15 @@ func (app *application) routes(db *sql.DB) http.Handler {
 	r.Use(httprate.LimitByIP(500, time.Minute))
 	r.Use(middleware.Timeout(45*time.Minute))
 	r.Use(middleware.Compress(5))
+
+	r.Post("/api/v1/signup", controller.SignUp(db))
+	r.Post("/api/v1/login", controller.Login(db))
+
+	r.Route("/api/v1", func(r chi.Router) {
+		r.Use(mw.Authenticate)
+		r.Get("/healthcheck", app.healthCheckHandler)
+		
+	})
 
 	return http.MaxBytesHandler(r, 300*1024*1024) 
 }
