@@ -1,28 +1,62 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {
-    const router = useRouter()
+  const router = useRouter();
+
   return (
-    <header className="bg-teal-700 flex items-center justify-between w-full px-8 py-4">
-      <div className="text-2xl font-bold text-white">CodeMap</div>
-      <nav className="flex gap-6 items-center">
-        <a href="#" className="text-white hover:underline">Home</a>
-        <a href="#" className="text-white hover:underline">About</a>
-        <a href="#" className="text-white hover:underline">Services</a>
-        <a href="#" className="text-white hover:underline">Contact</a>
-       
-            <button 
+    <header className="fixed top-0 z-50 w-full bg-black/80 backdrop-blur border-b border-neutral-800">
+      <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
+        
+        {/* Brand */}
+        <div
+          onClick={() => router.push("/")}
+          className="text-2xl font-extrabold tracking-tight cursor-pointer"
+        >
+          <span className="text-white">CODE</span>
+          <span className="text-gray-400">map</span>
+        </div>
+
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
+          <NavLink label="Home" />
+          <NavLink label="About" />
+          <NavLink label="Services" />
+          <NavLink label="Contact" />
+        </nav>
+
+        {/* Actions */}
+        <div className="flex items-center gap-4">
+          <button
             onClick={() => router.push("/Login")}
-            className="bg-white text-teal-700 font-semibold px-4 py-1 rounded-md ml-4">Login</button>
-       
-   
-             <button
-             onClick={() => router.push("/Signup")}
-             className="bg-teal-500 text-white font-semibold px-4 py-1 rounded-md ml-2">Register</button>
-       
-       
-      </nav>
+            className="text-gray-300 hover:text-white transition-colors"
+          >
+            Login
+          </button>
+
+          <button
+            onClick={() => router.push("/Signup")}
+            className="bg-white text-black px-5 py-2 rounded-md font-semibold
+                       hover:bg-gray-200 transition-all"
+          >
+            Get Started
+          </button>
+        </div>
+      </div>
     </header>
+  );
+}
+
+/* Reusable Nav Link */
+function NavLink({ label }) {
+  return (
+    <span
+      className="text-gray-400 hover:text-white transition-colors cursor-pointer
+                 relative after:absolute after:left-0 after:-bottom-1
+                 after:h-[1px] after:w-0 after:bg-white
+                 hover:after:w-full after:transition-all"
+    >
+      {label}
+    </span>
   );
 }
