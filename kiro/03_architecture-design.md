@@ -17,8 +17,6 @@
 | **Language Extensibility** | Pluggable parsers, consistent graph model | Add languages without core changes |
 | **Visualization-First** | Data structures optimized for visual queries | Real-time graph navigation |
 
-> **Judge Insight:** Each principle directly addresses identified problems from our problem analysis phase.
-
 ## 2. High-Level Logical Architecture
 
 **TL;DR:** Four-layer separation with clear data flow and responsibilities.
@@ -94,8 +92,6 @@ graph TD
 | **6. Query Execution** | API Layer | Graph queries | Dependency traversal, impact analysis | Query results |
 | **7. Visualization** | Frontend | Query results | Interactive graph rendering | User interface |
 
-> **Architecture Validation:** Each step addresses core problems—hidden dependencies (steps 3-4), slow onboarding (step 7), risky changes (step 6).
-
 ## 4. Why Graph-Centric Architecture Is Essential
 
 **TL;DR:** Code is naturally graph-structured. Graph architecture enables the queries developers actually need.
@@ -129,8 +125,6 @@ graph TD
 - System structure visible immediately
 - Most connected components = most important
 - Navigation follows natural code relationships
-
-> **Technical Insight:** Traditional file-based views hide relationships. Graph views make every connection explicit and queryable.
 
 ## 5. Key Architectural Decisions
 
@@ -167,8 +161,6 @@ graph TD
 - **Solution:** Frontend focused purely on rendering and interaction
 - **Result:** Simple deployment, clear separation of concerns
 
-> **Judge Insight:** Each decision directly supports core goal of making code relationships visible and navigable.
-
 ## 6. Scope Boundaries (Intentional Non-Goals)
 
 **TL;DR:** Disciplined focus on core value proposition. Clear boundaries enable deep execution.
@@ -187,8 +179,6 @@ graph TD
 - Solve core problem completely vs. multiple problems partially
 - Enable deep execution on architectural comprehension
 - Maintain clear value proposition without feature creep
-
-> **Product Discipline:** These boundaries strengthen rather than limit CodeMap's value proposition.
 
 ## 7. Architectural Extensibility
 
@@ -221,8 +211,6 @@ graph TD
 
 🔁 **Extensibility Principle:** Clear layer interfaces enable enhancement without redesign.
 
-> **Forward-Looking:** What additional developer productivity problems could this architecture address as it matures?
-
 ---
 
 ## Architecture Summary
@@ -241,7 +229,5 @@ graph TD
 **Clear Boundaries:** Defined component responsibilities and interfaces
 **Proven Technologies:** Built on established patterns (graph databases, static analysis, visualization)
 **Extensible Patterns:** Architecture supports growth without redesign
-
-**Judge Takeaway:** This logical architecture provides a solid foundation that guides development while maintaining focus on core value proposition—transforming cognitive overload into confident understanding.
 
 **Ready for Implementation:** Clear component boundaries, defined interfaces, and extensible patterns enable immediate development start.
