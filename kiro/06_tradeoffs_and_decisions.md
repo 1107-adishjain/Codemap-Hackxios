@@ -19,6 +19,7 @@ This document captures engineering decisions made during CodeMap development. Ea
 | **Graph Visualization** | Cytoscape.js | react-force-graph-2d | Learning curve ↔ Reliability |
 | **Data Model** | Neo4j Browser format | Custom format | Refactoring effort ↔ Industry compatibility |
 | **Large Codebases** | Limited initial size | Full optimization | MVP focus ↔ Future scalability |
+| **Package Manager** | Yarn | npm | Learning curve ↔ Dependency resolution |
 
 ## 1. Backend Language – Go
 
@@ -531,3 +532,133 @@ Large Repo → Smart Analysis → Clustering → Progressive Loading → Full Sc
 - *"Clean interface, no performance issues"*
 - *"Looking forward to enterprise features"*
 
+## 10. Package Manager – Yarn vs npm
+
+### The Dependency Challenge
+
+**The Problem:** Tree-sitter (our code analysis library) had complex peer dependency conflicts that blocked development progress.
+
+```
+😤 NPM DEPENDENCY NIGHTMARE
+┌─────────────────────────────────────────────────────────────────┐
+│  What We Encountered:                                           │
+│  ├── 🚫 Peer dependency conflicts with tree-sitter             │
+│  ├── 🔄 Conflicting version requirements                        │
+│  ├── ⚠️ Installation failures blocking development              │
+│  └── 😰 Time pressure mounting during hackathon                │
+│                                                                 │
+│  Error Messages We Faced:                                       │
+│  ├── "ERESOLVE unable to resolve dependency tree"              │
+│  ├── "Conflicting peer dependency: tree-sitter@^0.20.0"       │
+│  ├── "Cannot resolve dependency conflicts"                     │
+│  └── "Installation failed with exit code 1"                   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Package Manager Comparison
+
+| **Criteria** | **Yarn** ✅ | **npm** | **pnpm** |
+|--------------|-------------|---------|----------|
+| **Dependency Resolution** | ✅ Advanced algorithms | ⚠️ Basic resolution | ✅ Efficient |
+| **Peer Dependency Handling** | ✅ Flexible options | ❌ Strict enforcement | ⚠️ Moderate |
+| **Conflict Resolution** | ✅ Multiple strategies | ❌ Limited options | ⚠️ Good |
+| **Development Speed** | ✅ Fast installs | ⚠️ Slower | ✅ Very fast |
+| **Team Familiarity** | ⚠️ Learning needed | ✅ Standard | ❌ Less common |
+
+### Why Yarn Saved Our Project
+
+```
+✅ YARN DEPENDENCY RESOLUTION SUPERPOWERS
+┌─────────────────────────────────────────────────────────────────┐
+│  Yarn's Flexible Approach:                                     │
+│  ├── 🎛️ Resolution strategies for conflicting dependencies      │
+│  ├── 🔧 Selective dependency resolution options                │
+│  ├── 📦 Better handling of peer dependency conflicts           │
+│  ├── 🚀 Faster installation and caching                        │
+│  └── 🛠️ Advanced workspace management                          │
+│                                                                 │
+│  Specific Solutions Yarn Provided:                             │
+│  ├── yarn install --ignore-peer-deps (temporary workaround)    │
+│  ├── Selective dependency resolution in package.json           │
+│  ├── Better conflict resolution algorithms                     │
+│  └── Clear error messages with suggested fixes                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### The Resolution Journey
+
+```
+DEPENDENCY CRISIS TIMELINE:
+Day 1: npm install → Conflicts → Development blocked
+         ↓
+Day 1: Research alternatives → Try yarn
+         ↓
+Day 1: yarn install → Success → Development resumed
+         ↓
+Result: ✅ Tree-sitter working, analysis engine functional
+```
+
+### Tree-sitter Integration Success
+
+```
+🌳 TREE-SITTER ANALYSIS PIPELINE
+┌─────────────────────────────────────────────────────────────────┐
+│  What Tree-sitter Enables:                                     │
+│  ├── 🔍 Multi-language code parsing                            │
+│  ├── 🏗️ Abstract syntax tree generation                        │
+│  ├── 🔗 Relationship extraction between code entities          │
+│  └── 📊 Metadata collection for graph nodes                    │
+│                                                                 │
+│  Languages Successfully Analyzed:                               │
+│  ├── JavaScript/TypeScript → Functions, classes, imports       │
+│  ├── Python → Functions, classes, modules                      │
+│  ├── Go → Functions, structs, packages                         │
+│  └── Java → Classes, methods, interfaces                       │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Trade-off Analysis
+
+| **✅ What We Gained** | **❌ What We Accepted** |
+|----------------------|------------------------|
+| 🛠️ Resolved dependency conflicts | 📚 Learning new package manager |
+| 🚀 Faster development workflow | 🔄 Team workflow adjustment |
+| 🎛️ Better dependency control | 📝 Additional configuration |
+| 🌳 Tree-sitter integration success | ⏰ Time spent switching tools |
+
+### Technical Impact
+
+**Dependency Resolution Strategy:**
+```json
+// package.json - Yarn selective resolution
+{
+  "resolutions": {
+    "tree-sitter": "^0.20.0",
+    "**/tree-sitter": "^0.20.0"
+  }
+}
+```
+
+**Development Workflow Improvement:**
+```
+BEFORE (npm):
+Install → Conflict → Research → Retry → Fail → Frustration
+
+AFTER (Yarn):
+Install → Success → Development → Analysis Working → Progress
+```
+
+### Decision Validation
+
+**Why This Switch Worked:**
+- **Immediate Problem Resolution:** Unblocked development within hours
+- **Better Tooling:** Advanced dependency management capabilities
+- **Future-Proof:** Better handling of complex dependency trees
+- **Team Productivity:** Eliminated installation friction
+
+**Developer Experience:**
+- *"Finally, tree-sitter is working!"*
+- *"Yarn resolved conflicts npm couldn't handle"*
+- *"Installation is faster and more reliable now"*
+
+**Technical Outcome:** Successfully integrated tree-sitter for multi-language code analysis, enabling CodeMap's core functionality of parsing diverse codebases into graph structures.
