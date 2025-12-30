@@ -15,6 +15,10 @@ This document captures engineering decisions made during CodeMap development. Ea
 | **Graph Database** | Neo4j | PostgreSQL | Operational complexity ↔ Natural relationships |
 | **Relational Database** | PostgreSQL | MongoDB | Schema rigidity ↔ Data consistency |
 | **Authentication** | JWT | Session-based | Token complexity ↔ Stateless scaling |
+| **Source Ingestion** | GitHub + ZIP | Raw folder upload | Dual complexity ↔ Better user experience |
+| **Graph Visualization** | Cytoscape.js | react-force-graph-2d | Learning curve ↔ Reliability |
+| **Data Model** | Neo4j Browser format | Custom format | Refactoring effort ↔ Industry compatibility |
+| **Large Codebases** | Limited initial size | Full optimization | MVP focus ↔ Future scalability |
 
 ## 1. Backend Language – Go
 
@@ -239,3 +243,291 @@ required    enabled
 | 📈 Easy scaling | 📦 Larger request payloads |
 | 🔧 Standard implementation | 🧠 Frontend token management |
 | 🌐 Cross-service compatibility | 🔒 Token storage security |
+
+
+## 6. Source Ingestion – GitHub Repository + ZIP Upload
+
+### User Input Challenge
+
+**The Question:** How should developers share their code with CodeMap for analysis?
+
+```
+👩‍💻 USER SCENARIOS & NEEDS
+┌─────────────────────────────────────────────────────────────────┐
+│  Developer Types & Their Preferences:                          │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ 🌐 Open Source Dev    → GitHub integration preferred    │   │
+│  │ 🏢 Enterprise Dev     → Private code via ZIP needed     │   │
+│  │ 💼 Freelancer         → Quick local analysis wanted     │   │
+│  │ 🔒 Security-Conscious → Full upload control required    │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Solution Approach Comparison
+
+| **Method** | **Accessibility** | **Speed** | **Context** | **User Control** | **Verdict** |
+|------------|------------------|-----------|-------------|------------------|-------------|
+| **GitHub + ZIP** ✅ | ✅ Universal | ✅ Optimized | ⚠️ Varies | ✅ High | **Chosen** |
+| **GitHub Only** | ❌ Public only | ⚠️ Network dependent | ✅ Full | ⚠️ Limited | Rejected |
+| **Raw Folder Upload** | ✅ Universal | ✅ Fast | ❌ None | ✅ Complete | Rejected |
+
+### Why Raw Folder Upload Didn't Work
+
+```
+❌ FOLDER UPLOAD REALITY CHECK
+┌─────────────────────────────────────────────────────────────────┐
+│  Browser Limitations:                                          │
+│  ├── 🚫 Security restrictions on folder access                 │
+│  ├── 🚫 Inconsistent cross-browser support                     │
+│  ├── 🚫 Performance issues with large folders                  │
+│  └── 🚫 Complex file filtering requirements                    │
+│                                                                 │
+│  User Experience Problems:                                      │
+│  ├── 😕 Confusing: "Which files should I include?"            │
+│  ├── 😰 Risky: Accidental sensitive file uploads              │
+│  ├── 🤔 Unclear: No standard project expectations             │
+│  └── 😤 Frustrating: Slow uploads for large projects          │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Our Dual Strategy Benefits
+
+```
+✅ GITHUB INTEGRATION
+┌─────────────────────────────────────────────────────────────────┐
+│  What Users Get:                                               │
+│  ├── 🔗 Just paste repository URL                              │
+│  ├── 📚 Full project context preserved                         │
+│  ├── 🎯 Automatic file filtering (.gitignore respected)        │
+│  ├── 📈 Commit history and metadata included                   │
+│  └── 🔄 Reproducible analysis with permanent links             │
+└─────────────────────────────────────────────────────────────────┘
+
+✅ ZIP UPLOAD
+┌─────────────────────────────────────────────────────────────────┐
+│  What Users Get:                                               │
+│  ├── 📁 Simple drag-and-drop experience                        │
+│  ├── 🔒 Complete privacy for sensitive code                    │
+│  ├── ⚡ Instant analysis start (no download wait)              │
+│  ├── 🎛️ Full control over included content                     │
+│  └── 🌍 Works with any project structure                       │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### User Flow Comparison
+
+```
+GITHUB WORKFLOW:
+User → Paste URL → Auto-download → Analysis → Results
+       ↓
+   ✅ Familiar & Fast
+
+ZIP WORKFLOW:  
+User → Drag ZIP → Extract → Analysis → Results
+       ↓
+   ✅ Private & Controlled
+
+FOLDER WORKFLOW (Rejected):
+User → Select Folder → Filter Files → Upload → Analysis → Results
+       ↓
+   ❌ Complex & Error-prone
+```
+
+### Trade-off Summary
+
+| **✅ What We Gained** | **❌ What We Accepted** |
+|----------------------|------------------------|
+| 🌍 Universal accessibility | 🔧 Dual implementation paths |
+| ⚡ Optimal speed per use case | 🧪 More testing scenarios |
+| 🎯 Professional workflow fit | 📝 Two sets of documentation |
+| 🔒 Security through user choice | 🛠️ Additional error handling |
+
+
+## 7. Graph Visualization Library – Cytoscape.js
+
+### The Visualization Challenge
+
+**The Problem:** Our initial choice (react-force-graph-2d) caused blank screens and data mapping headaches during development.
+
+```
+😤 REACT-FORCE-GRAPH-2D STRUGGLES
+┌─────────────────────────────────────────────────────────────────┐
+│  Development Issues We Faced:                                   │
+│  ├── 🖥️ Blank screens with no clear error messages             │
+│  ├── 🔄 Complex data transformation requirements                │
+│  ├── 🐛 Difficult debugging and troubleshooting                │
+│  └── ⏰ Time pressure mounting during hackathon                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Library Comparison
+
+| **Criteria** | **Cytoscape.js** ✅ | **react-force-graph-2d** | **D3.js** |
+|--------------|-------------------|---------------------------|-----------|
+| **Reliability** | ✅ Industry-proven | ❌ Caused blank screens | ✅ Stable but complex |
+| **Data Compatibility** | ✅ Matches Neo4j format | ❌ Required transformation | ⚠️ Custom implementation |
+| **Learning Curve** | ⚠️ Moderate setup | ✅ Simple initially | ❌ Very steep |
+| **Professional Quality** | ✅ Production-ready | ⚠️ Basic styling | ✅ Maximum control |
+| **Large Graph Handling** | ✅ Optimized | ⚠️ Performance issues | ✅ With custom work |
+
+### Why Cytoscape.js Won
+
+```
+✅ CYTOSCAPE.JS ADVANTAGES
+┌─────────────────────────────────────────────────────────────────┐
+│  Immediate Benefits:                                            │
+│  ├── 🛡️ Robust: No more blank screen mysteries                 │
+│  ├── 🔗 Compatible: Direct Neo4j data format support           │
+│  ├── 🏭 Professional: Industry-standard graph visualization    │
+│  ├── 📈 Scalable: Handles large graphs efficiently             │
+│  └── 🎨 Flexible: Rich styling and layout options              │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### The Switch Decision
+
+```
+DECISION MOMENT:
+Hackathon Day 2 → Blank screens → Panic → Research → Switch to Cytoscape.js
+                                    ↓
+                            ✅ Graphs working in 2 hours
+```
+
+### Trade-off Summary
+
+| **✅ What We Gained** | **❌ What We Accepted** |
+|----------------------|------------------------|
+| 🛡️ Reliable graph rendering | 📚 Steeper learning curve |
+| 🔗 Neo4j data compatibility | ⚙️ More configuration needed |
+| 🏭 Professional-quality visuals | ⏰ Time spent switching libraries |
+| 📈 Large graph performance | 📖 Additional documentation reading |
+
+## 8. Data Model – Neo4j Browser Format
+
+### Data Format Challenge
+
+**The Question:** How should we structure graph data between backend and frontend?
+
+### Format Options Analysis
+
+```
+🎯 DATA MODEL DECISION MATRIX
+┌─────────────────────────────────────────────────────────────────┐
+│  Format Options Considered:                                     │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ 📊 Custom Format     → Full control, more work         │   │
+│  │ 🌐 D3.js Format      → D3 compatibility, limited       │   │
+│  │ 🔗 Neo4j Browser     → Industry standard, proven ✅    │   │
+│  │ 📈 Cytoscape Format  → Library native, isolated        │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Why Neo4j Browser Format
+
+```
+✅ NEO4J BROWSER FORMAT BENEFITS
+┌─────────────────────────────────────────────────────────────────┐
+│  Strategic Advantages:                                          │
+│  ├── 🏭 Industry Standard: Used by Neo4j's own tools           │
+│  ├── 🔗 Future-Proof: Compatible with graph ecosystem          │
+│  ├── 🐛 Easier Debugging: Familiar format for developers       │
+│  ├── 🔄 Tool Integration: Works with existing graph tools      │
+│  └── 📚 Documentation: Well-documented and understood          │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Implementation Impact
+
+```
+REFACTORING JOURNEY:
+Custom Format → Neo4j Browser Format → Cytoscape.js
+      ↓                    ↓                  ↓
+   Complex bugs      Compatibility      Smooth rendering
+```
+
+### Trade-off Analysis
+
+| **✅ What We Gained** | **❌ What We Accepted** |
+|----------------------|------------------------|
+| 🏭 Industry compatibility | 🔄 Backend refactoring effort |
+| 🐛 Easier debugging | 🎨 Frontend data restructuring |
+| 🔗 Future integrations | ⏰ Development time investment |
+| 📚 Standard documentation | 🧠 Learning new format structure |
+
+## 9. Large Codebase Handling – MVP-First Approach
+
+### Scalability Challenge
+
+**The Reality:** Large monorepos (10K+ files) need special handling, but hackathon time is limited.
+
+### Approach Comparison
+
+```
+📊 LARGE CODEBASE STRATEGY OPTIONS
+┌─────────────────────────────────────────────────────────────────┐
+│  Strategy Evaluation:                                           │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ 🚀 Full Optimization → Perfect performance, no demo    │   │
+│  │ ⚡ Basic Limits      → Smooth demo, future scaling ✅   │   │
+│  │ 🤞 No Limits        → Potential crashes, risky        │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Our MVP Strategy
+
+```
+✅ SMART SCALING APPROACH
+┌─────────────────────────────────────────────────────────────────┐
+│  Current Implementation:                                        │
+│  ├── 📏 Reasonable Limits: Handle typical project sizes        │
+│  ├── 🎯 Smooth Demo: Ensure reliable hackathon presentation    │
+│  ├── 🏗️ Scalable Architecture: Ready for future optimization   │
+│  └── 📈 Growth Path: Clear roadmap for enterprise scale        │
+│                                                                 │
+│  Future Optimization Plan:                                      │
+│  ├── 🧠 Intelligent Clustering: Group related components       │
+│  ├── 🔍 Progressive Loading: Load graph sections on demand     │
+│  ├── ⚡ Performance Tuning: Optimize for massive repositories  │
+│  └── 🎛️ User Controls: Let users manage complexity             │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Current vs Future Handling
+
+```
+CURRENT APPROACH (MVP):
+Large Repo → Size Check → Reasonable Limits → Smooth Experience
+                ↓
+        ✅ Reliable demo performance
+
+FUTURE APPROACH (Planned):
+Large Repo → Smart Analysis → Clustering → Progressive Loading → Full Scale
+                ↓
+        🚀 Enterprise-ready performance
+```
+
+### Trade-off Summary
+
+| **✅ What We Gained** | **❌ What We Accepted** |
+|----------------------|------------------------|
+| 🎯 Reliable demo experience | 📏 Current size limitations |
+| 🏗️ Solid architecture foundation | ⏳ Deferred optimization work |
+| ⏰ Focused development time | 🏢 Not enterprise-ready yet |
+| 🛡️ Predictable performance | 📈 Future scaling investment needed |
+
+### Validation Strategy
+
+**Why This Approach Works:**
+- **Demo Success:** Ensures smooth hackathon presentation
+- **User Feedback:** Validates core concept before optimization
+- **Architecture Ready:** Foundation supports future scaling
+- **Resource Focused:** Concentrates effort on core value
+
+**User Experience:**
+- *"Works great with my typical projects"*
+- *"Clean interface, no performance issues"*
+- *"Looking forward to enterprise features"*
+
