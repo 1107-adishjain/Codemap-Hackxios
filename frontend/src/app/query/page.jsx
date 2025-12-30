@@ -13,56 +13,60 @@ const GraphExplorer = dynamic(
 );
 
 export default function QueryExplorePage() {
-  const [activeTab, setActiveTab] = useState("query"); // "query" | "graph"
+  const [activeTab, setActiveTab] = useState("query");
   const searchParams = useSearchParams();
   const projectId = searchParams.get("projectId");
 
   return (
-    <div className="bg-gradient-to-b from-teal-800 to-teal-950 min-h-screen text-white">
+    <div className="min-h-screen bg-black text-white mt-30">
       <Navbar />
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-6 py-10">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold">Query & Explore</h1>
-          <p className="mt-4 text-lg text-gray-300">
-            Analyze your codebase and explore the graph
+        <div className="mb-10">
+          <h1 className="text-3xl font-semibold tracking-tight">
+            Query & Explore
+          </h1>
+          <p className="mt-2 text-sm text-gray-400">
+            Analyze your codebase and inspect relationships through queries and graphs
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="flex bg-gray-800 rounded-lg p-1">
+        {/* <div className="mb-8 border-b border-gray-800">
+          <div className="flex gap-8">
             <button
               onClick={() => setActiveTab("query")}
-              className={`px-6 py-3 rounded-md transition-colors ${
+              className={`pb-3 text-sm transition-all ${
                 activeTab === "query"
-                  ? "bg-teal-500 text-white"
-                  : "text-gray-300 hover:text-white"
+                  ? "border-b-2 border-white text-white"
+                  : "text-gray-400 hover:text-gray-200"
               }`}
             >
-              🔍 Query & Analyze
+              Query & Analyze
             </button>
 
             <button
               onClick={() => setActiveTab("graph")}
-              className={`px-6 py-3 rounded-md transition-colors ${
+              className={`pb-3 text-sm transition-all ${
                 activeTab === "graph"
-                  ? "bg-teal-500 text-white"
-                  : "text-gray-300 hover:text-white"
+                  ? "border-b-2 border-white text-white"
+                  : "text-gray-400 hover:text-gray-200"
               }`}
             >
-              🌐 Graph Explorer
+              Graph Explorer
             </button>
           </div>
-        </div>
+        </div> */}
 
-        {/* Content */}
-        {activeTab === "query" ? (
-          <QueryDashboard projectId={projectId} />
-        ) : (
-          <GraphExplorer projectId={projectId} />
-        )}
+        {/* Content Container */}
+        <div className="rounded-lg border border-gray-800 bg-neutral-950 p-6">
+          {activeTab === "query" ? (
+            <QueryDashboard projectId={projectId} />
+          ) : (
+            <GraphExplorer projectId={projectId} />
+          )}
+        </div>
       </div>
     </div>
   );

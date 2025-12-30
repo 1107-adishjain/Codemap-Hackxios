@@ -6,10 +6,11 @@ const { typescript, tsx } = require('tree-sitter-typescript');
 const Html = require('tree-sitter-html');
 const Css = require('tree-sitter-css');
 const Kotlin = require('tree-sitter-kotlin');
-const Swift = require('tree-sitter-swift');
+// const Swift = require('tree-sitter-swift');
 const Dart = require('tree-sitter-dart');
 const Json = require('tree-sitter-json');
 const Yaml = require('tree-sitter-yaml');
+
 
 const goExtractor = require('./extractors/go_extractor');
 const pyExtractor = require('./extractors/py_extractor');
@@ -20,7 +21,7 @@ const tsExtractor = require('./extractors/ts_extractor');
 const htmlExtractor = require('./extractors/html_extractor');
 const cssExtractor = require('./extractors/css_extractor');
 const kotlinExtractor = require('./extractors/kotlin_extractor');
-const swiftExtractor = require('./extractors/swift_extractor');
+// const swiftExtractor = require('./extractors/swift_extractor');
 const dartExtractor = require('./extractors/dart_extractor');
 const jsonExtractor = require('./extractors/json_extractor');
 const yamlExtractor = require('./extractors/yaml_extractor');
@@ -85,7 +86,7 @@ const languageConfig = {
     '.css': { grammar: Css, extractor: cssExtractor },
     '.kt': { grammar: Kotlin, extractor: kotlinExtractor },
     '.kts': { grammar: Kotlin, extractor: kotlinExtractor },
-    '.swift': { grammar: Swift, extractor: swiftExtractor },
+    // '.swift': { grammar: Swift, extractor: swiftExtractor },
     '.dart': { grammar: Dart, extractor: dartExtractor },
     '.json': { grammar: Json, extractor: jsonExtractor },
     '.yaml': { grammar: Yaml, extractor: yamlExtractor },

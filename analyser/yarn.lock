@@ -141,19 +141,26 @@ cors@^2.8.5:
     object-assign "^4"
     vary "^1"
 
+debug@^4.1.1:
+  version "4.4.1"
+  resolved "https://registry.npmjs.org/debug/-/debug-4.4.1.tgz"
+  integrity sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==
+  dependencies:
+    ms "^2.1.3"
+
+debug@^4.4.0:
+  version "4.4.1"
+  resolved "https://registry.npmjs.org/debug/-/debug-4.4.1.tgz"
+  integrity sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==
+  dependencies:
+    ms "^2.1.3"
+
 debug@2.6.9:
   version "2.6.9"
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
   dependencies:
     ms "2.0.0"
-
-debug@^4.1.1, debug@^4.4.0:
-  version "4.4.1"
-  resolved "https://registry.npmjs.org/debug/-/debug-4.4.1.tgz"
-  integrity sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==
-  dependencies:
-    ms "^2.1.3"
 
 depd@2.0.0:
   version "2.0.0"
@@ -345,7 +352,7 @@ ieee754@^1.2.1:
   resolved "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
-inherits@2.0.4, inherits@^2.0.3, inherits@~2.0.3:
+inherits@^2.0.3, inherits@~2.0.3, inherits@2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
@@ -359,11 +366,6 @@ isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
   integrity sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==
-
-isexe@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
-  integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
 math-intrinsics@^1.1.0:
   version "1.1.0"
@@ -414,12 +416,17 @@ mkdirp@^0.5.4:
   dependencies:
     minimist "^1.2.6"
 
+ms@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz"
+  integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz"
   integrity sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==
 
-ms@2.1.3, ms@^2.1.3:
+ms@2.1.3:
   version "2.1.3"
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
@@ -437,7 +444,7 @@ multer@^1.4.5-lts.1:
     type-is "^1.6.4"
     xtend "^4.0.0"
 
-nan@^2.14.0, nan@^2.15.0, nan@^2.18.0:
+nan@^2.14.0, nan@^2.14.1, nan@^2.15.0, nan@^2.18.0:
   version "2.23.0"
   resolved "https://registry.npmjs.org/nan/-/nan-2.23.0.tgz"
   integrity sha512-1UxuyYGdoQHcGg87Lkqm3FzefucTa0NAiOcuRsDmysep3c1LVCRK2krrUDafMWtjSG04htvAmvg96+SDknOmgQ==
@@ -475,12 +482,12 @@ node-addon-api@^7.1.0:
   resolved "https://registry.npmjs.org/node-addon-api/-/node-addon-api-7.1.1.tgz"
   integrity sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==
 
-node-addon-api@^8.0.0, node-addon-api@^8.3.0, node-addon-api@^8.3.1:
+node-addon-api@^8.0.0:
   version "8.5.0"
   resolved "https://registry.npmjs.org/node-addon-api/-/node-addon-api-8.5.0.tgz"
   integrity sha512-/bRZty2mXUIFY/xU5HLvveNHlswNJej+RnxBjOMkidWfwZzgTbPG1E3K5TOxRLOR+5hX7bSofy8yf1hZevMS8A==
 
-node-gyp-build@^4.8.0, node-gyp-build@^4.8.1, node-gyp-build@^4.8.4:
+node-gyp-build@^4.8.0, node-gyp-build@^4.8.1:
   version "4.8.4"
   resolved "https://registry.npmjs.org/node-gyp-build/-/node-gyp-build-4.8.4.tgz"
   integrity sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==
@@ -567,15 +574,15 @@ rxjs@^7.8.1:
   dependencies:
     tslib "^2.1.0"
 
-safe-buffer@5.2.1, safe-buffer@~5.2.0:
-  version "5.2.1"
-  resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz"
-  integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
-
 safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
+
+safe-buffer@~5.2.0, safe-buffer@5.2.1:
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz"
+  integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
 
 "safer-buffer@>= 2.1.2 < 3":
   version "2.1.2"
@@ -694,17 +701,12 @@ toidentifier@1.0.1:
   resolved "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.1.tgz"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
 
-tree-sitter-cli@^0.22.6:
-  version "0.22.6"
-  resolved "https://registry.npmjs.org/tree-sitter-cli/-/tree-sitter-cli-0.22.6.tgz"
-  integrity sha512-s7mYOJXi8sIFkt/nLJSqlYZP96VmKTc3BAwIX0rrrlRxWjWuCwixFqwzxWZBQz4R8Hx01iP7z3cT3ih58BUmZQ==
+tree-sitter-cli@0.21.0:
+  version "0.21.0"
+  resolved "https://registry.npmjs.org/tree-sitter-cli/-/tree-sitter-cli-0.21.0.tgz"
+  integrity sha512-wA7wT5724fNQW82XDH6zT6ZcYonjrAKLCHHuhLsPcAKULrhp3rNuMvlgBdB5FUBvmjHNhtTZF/qpHenMoRJPBw==
 
-tree-sitter-cli@^0.23:
-  version "0.23.2"
-  resolved "https://registry.npmjs.org/tree-sitter-cli/-/tree-sitter-cli-0.23.2.tgz"
-  integrity sha512-kPPXprOqREX+C/FgUp2Qpt9jd0vSwn+hOgjzVv/7hapdoWpa+VeWId53rf4oNNd29ikheF12BYtGD/W90feMbA==
-
-tree-sitter-cpp@^0.21.0:
+tree-sitter-cpp@0.21.0:
   version "0.21.0"
   resolved "https://registry.npmjs.org/tree-sitter-cpp/-/tree-sitter-cpp-0.21.0.tgz"
   integrity sha512-KH/wnRs/V0OcHvTRT5wanaJKp9t5slxknLJw3MeqtKPjhhs6WiAODlBdx4vg/hlNVeGn2wea9hjPIBVWVIra3Q==
@@ -712,37 +714,36 @@ tree-sitter-cpp@^0.21.0:
     node-addon-api "^8.0.0"
     node-gyp-build "^4.8.0"
 
-tree-sitter-css@^0.20.0:
+tree-sitter-css@0.20.0:
   version "0.20.0"
   resolved "https://registry.npmjs.org/tree-sitter-css/-/tree-sitter-css-0.20.0.tgz"
   integrity sha512-ammbs1bnIwHXPVtPGNc3T16rhPFRiK97pBgO4svlYWyt+fSEgGQzK3MSWB5vf3k3pSDWkpEFOTUxPPMR6k7N7Q==
   dependencies:
     nan "^2.18.0"
 
-tree-sitter-dart@^1.0.0:
+tree-sitter-dart@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/tree-sitter-dart/-/tree-sitter-dart-1.0.0.tgz"
   integrity sha512-Ve5YMPJjjGW9LEsO+MngAOibQsw5obFp+bUT41pvwdcXWRwJImOWs3eaPi6AubEiBmc09qvhdvxeIXvxlhMnug==
   dependencies:
     nan "^2.15.0"
 
-tree-sitter-go@^0.20.1:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/tree-sitter-go/-/tree-sitter-go-0.25.0.tgz#ebd6653c43b0146c3c6fe354e1b99963534c8ee0"
-  integrity sha512-APBc/Dq3xz/e35Xpkhb1blu5UgW+2E3RyGWawZSCNcbGwa7jhSQPS8KsUupuzBla8PCo8+lz9W/JDJjmfRa2tw==
-  dependencies:
-    node-addon-api "^8.3.1"
-    node-gyp-build "^4.8.4"
-
-tree-sitter-html@^0.20.0:
-  version "0.20.4"
-  resolved "https://registry.npmjs.org/tree-sitter-html/-/tree-sitter-html-0.20.4.tgz"
-  integrity sha512-IUE82HgrxGXMiq5xYkAV6VYt+txcqIo4yPUEvq43UIabCKeEUqDOEOmCE9W9mQ2c3392VJEXOPzlpd7VuX1c6Q==
+tree-sitter-go@0.21.0:
+  version "0.21.0"
+  resolved "https://registry.npmjs.org/tree-sitter-go/-/tree-sitter-go-0.21.0.tgz"
+  integrity sha512-i8Y7GVNg/F4GNCVkQBqbCt9fLGiXaMXjZkDoDWrm/pNOpVxLb+QX0ue8E2RlXoG8otHz5LruDBz5qou5iNjdBw==
   dependencies:
     node-addon-api "^8.0.0"
-    node-gyp-build "^4.8.1"
+    node-gyp-build "^4.8.0"
 
-tree-sitter-java@^0.21.0:
+tree-sitter-html@0.20.0:
+  version "0.20.0"
+  resolved "https://registry.npmjs.org/tree-sitter-html/-/tree-sitter-html-0.20.0.tgz"
+  integrity sha512-KoK3BR1o5KWeYFGax1Dy8j+NHHhdgD64pjFU/JgnBrZjmdp4CfJg2HJiWnmB8OmFYQeb30Mm+lDVps2dNFJMdw==
+  dependencies:
+    nan "^2.18.0"
+
+tree-sitter-java@0.21.0:
   version "0.21.0"
   resolved "https://registry.npmjs.org/tree-sitter-java/-/tree-sitter-java-0.21.0.tgz"
   integrity sha512-CKJiTo1uc3SUsgEcaZgufGx8my6dzihy8JR/JsJH40Tj3uSe2/eFLk+0q+fpbosGAyY4YiXJtEoFB2O4bS2yOw==
@@ -750,7 +751,7 @@ tree-sitter-java@^0.21.0:
     node-addon-api "^8.0.0"
     node-gyp-build "^4.8.0"
 
-tree-sitter-javascript@^0.21.0:
+tree-sitter-javascript@0.21.4:
   version "0.21.4"
   resolved "https://registry.npmjs.org/tree-sitter-javascript/-/tree-sitter-javascript-0.21.4.tgz"
   integrity sha512-Lrk8yahebwrwc1sWJE9xPcz1OnnqiEV7Dh5fbN6EN3wNAdu9r06HpTqLqDwUUbnG4EB46Sfk+FJFAOldfoKLOw==
@@ -758,14 +759,14 @@ tree-sitter-javascript@^0.21.0:
     node-addon-api "^8.0.0"
     node-gyp-build "^4.8.1"
 
-tree-sitter-json@^0.20.0:
-  version "0.20.2"
-  resolved "https://registry.npmjs.org/tree-sitter-json/-/tree-sitter-json-0.20.2.tgz"
-  integrity sha512-eUxrowp4F1QEGk/i7Sa+Xl8Crlfp7J0AXxX1QdJEQKQYMWhgMbCIgyQvpO3Q0P9oyTrNQxRLlRipDS44a8EtRw==
+tree-sitter-json@0.20.0:
+  version "0.20.0"
+  resolved "https://registry.npmjs.org/tree-sitter-json/-/tree-sitter-json-0.20.0.tgz"
+  integrity sha512-PteOLH+Tx6Bz4ZA/d40/DbkiSXXRM/gKahhHI8hQ1lWNfFvdknnz9k3Mz84ol5srRyLboJ8wp8GSkhZ6ht9EGQ==
   dependencies:
-    nan "^2.18.0"
+    nan "^2.14.1"
 
-tree-sitter-kotlin@^0.3.8:
+tree-sitter-kotlin@0.3.8:
   version "0.3.8"
   resolved "https://registry.npmjs.org/tree-sitter-kotlin/-/tree-sitter-kotlin-0.3.8.tgz"
   integrity sha512-A4obq6bjzmYrA+F0JLLoheFPcofFkctNaZSpnDd+GPn1SfVZLY4/GG4C0cYVBTOShuPBGGAOPLM1JWLZQV4m1g==
@@ -773,7 +774,7 @@ tree-sitter-kotlin@^0.3.8:
     node-addon-api "^7.1.0"
     node-gyp-build "^4.8.0"
 
-tree-sitter-python@^0.21.0:
+tree-sitter-python@0.21.0:
   version "0.21.0"
   resolved "https://registry.npmjs.org/tree-sitter-python/-/tree-sitter-python-0.21.0.tgz"
   integrity sha512-IUKx7JcTVbByUx1iHGFS/QsIjx7pqwTMHL9bl/NGyhyyydbfNrpruo2C7W6V4KZrbkkCOlX8QVrCoGOFW5qecg==
@@ -781,38 +782,28 @@ tree-sitter-python@^0.21.0:
     node-addon-api "^7.1.0"
     node-gyp-build "^4.8.0"
 
-tree-sitter-swift@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.npmjs.org/tree-sitter-swift/-/tree-sitter-swift-0.7.1.tgz"
-  integrity sha512-pneKVTuGamaBsqqqfB9BvNQjktzh/0IVPR54jLB5Fq/JTDQwYHd0Wo6pVyZ5jAYpbztzq+rJ/rpL9ruxTmSoKw==
-  dependencies:
-    node-addon-api "^8.0.0"
-    node-gyp-build "^4.8.0"
-    tree-sitter-cli "^0.23"
-    which "2.0.2"
-
-tree-sitter-typescript@^0.21.0:
-  version "0.21.2"
-  resolved "https://registry.npmjs.org/tree-sitter-typescript/-/tree-sitter-typescript-0.21.2.tgz"
-  integrity sha512-/RyNK41ZpkA8PuPZimR6pGLvNR1p0ibRUJwwQn4qAjyyLEIQD/BNlwS3NSxWtGsAWZe9gZ44VK1mWx2+eQVldg==
+tree-sitter-typescript@0.21.1:
+  version "0.21.1"
+  resolved "https://registry.npmjs.org/tree-sitter-typescript/-/tree-sitter-typescript-0.21.1.tgz"
+  integrity sha512-emQMXz1CpVSkMUq1NEMrbJkUUdKyGrnIl++Mt4LjEeq7ttpOdotb4a2A6zSMs39ppVebFhpTlbSrAMDSEWEEjw==
   dependencies:
     node-addon-api "^8.0.0"
     node-gyp-build "^4.8.1"
 
-tree-sitter-yaml@^0.5.0:
+tree-sitter-yaml@0.5.0:
   version "0.5.0"
   resolved "https://registry.npmjs.org/tree-sitter-yaml/-/tree-sitter-yaml-0.5.0.tgz"
   integrity sha512-POJ4ZNXXSWIG/W4Rjuyg36MkUD4d769YRUGKRqN+sVaj/VCo6Dh6Pkssn1Rtewd5kybx+jT1BWMyWN0CijXnMA==
   dependencies:
     nan "^2.14.0"
 
-tree-sitter@^0.22.6:
-  version "0.22.3"
-  resolved "https://registry.yarnpkg.com/tree-sitter/-/tree-sitter-0.22.3.tgz#3c1e4f3aff8df37789c63d732bf99b1131e25f0a"
-  integrity sha512-eq0a7r3Pcyvm2C61iKKB+Z/bbwsyzXygzfJvu3N+PD1PeZUbBHafR9vTgqX1uW71u0MMUwQmG9lZi0Ls6htszQ==
+tree-sitter@^0.21.0, tree-sitter@^0.21.1, tree-sitter@0.21.1:
+  version "0.21.1"
+  resolved "https://registry.npmjs.org/tree-sitter/-/tree-sitter-0.21.1.tgz"
+  integrity sha512-7dxoA6kYvtgWw80265MyqJlkRl4yawIjO7S5MigytjELkX43fV2WsAXzsNfO7sBpPPCF5Gp0+XzHk0DwLCq3xQ==
   dependencies:
-    node-addon-api "^8.3.0"
-    node-gyp-build "^4.8.4"
+    node-addon-api "^8.0.0"
+    node-gyp-build "^4.8.0"
 
 tslib@^2.1.0:
   version "2.8.1"
@@ -832,7 +823,7 @@ typedarray@^0.0.6:
   resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-unpipe@1.0.0, unpipe@~1.0.0:
+unpipe@~1.0.0, unpipe@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz"
   integrity sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==
@@ -851,13 +842,6 @@ vary@^1, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
-
-which@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/which/-/which-2.0.2.tgz"
-  integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
-  dependencies:
-    isexe "^2.0.0"
 
 xtend@^4.0.0:
   version "4.0.2"
