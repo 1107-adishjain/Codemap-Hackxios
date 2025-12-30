@@ -11,7 +11,7 @@
 ├─────────────────────────────────────────────────────────────────┤
 │  🏗️ MVP (Current)     📈 Scale (6 months)   🏢 Enterprise (1yr) │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
-│  │ ✅ 1K files     │  │ 🎯 10K files    │  │ 🚀 100K+ files │ │
+│  │ ✅ 100 files     │  │ 🎯 10K files    │  │ 🚀 100K+ files │ │
 │  │ ✅ Basic graphs │  │ 🎯 Smart filter │  │ 🚀 AI insights │ │
 │  │ ✅ Local deploy │  │ 🎯 AWS cloud    │  │ 🚀 Multi-tenant │ │
 │  │ ✅ Single user  │  │ 🎯 Team collab  │  │ 🚀 Enterprise   │ │
@@ -26,7 +26,7 @@
 
 | **Limitation** | **Why We Chose This** | **Future Solution** |
 |----------------|----------------------|-------------------|
-| 📏 **1K File Limit** | Reliable demo performance | Smart clustering + progressive loading |
+| 📏 **100 File Limit** | Reliable demo performance | Smart clustering + progressive loading |
 | 🏠 **Local Deployment** | Zero AWS costs during hackathon | Full cloud architecture ready |
 | 👤 **Single User** | Simplified authentication | Multi-tenant with team features |
 | 🎨 **Basic Filtering** | Core functionality first | Advanced graph algorithms |
@@ -40,7 +40,7 @@
 ┌─────────────────────────────────────────────────────────────────┐
 │  Size Range    │ Current Approach │ Planned Solution │ Timeline │
 ├─────────────────────────────────────────────────────────────────┤
-│  📁 1-1K files │ ✅ Full render   │ ✅ Works great   │ Now      │
+│  📁 100 files │ ✅ Full render   │ ✅ Works great   │ Now      │
 │  📂 1K-10K     │ ⚠️ Slow loading  │ 🎯 Smart cluster │ 3 months │
 │  📚 10K-50K    │ ❌ Not supported │ 🔄 Progressive   │ 6 months │
 │  🏢 50K+       │ ❌ Not supported │ 🧠 AI-powered    │ 12 months│
