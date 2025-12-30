@@ -40,11 +40,10 @@ export default function UploadDashboard({
               setUploadType("zip");
               setMessage("");
             }}
-            className={`flex-1 py-2 text-sm font-medium transition ${
-              uploadType === "zip"
+            className={`flex-1 py-2 text-sm font-medium transition ${uploadType === "zip"
                 ? "bg-white text-black"
                 : "bg-black text-gray-400 hover:text-white"
-            }`}
+              }`}
           >
             ZIP Upload
           </button>
@@ -53,11 +52,10 @@ export default function UploadDashboard({
               setUploadType("github");
               setMessage("");
             }}
-            className={`flex-1 py-2 text-sm font-medium transition ${
-              uploadType === "github"
+            className={`flex-1 py-2 text-sm font-medium transition ${uploadType === "github"
                 ? "bg-white text-black"
                 : "bg-black text-gray-400 hover:text-white"
-            }`}
+              }`}
           >
             GitHub Repository
           </button>
@@ -108,11 +106,10 @@ export default function UploadDashboard({
         <button
           onClick={handleUpload}
           disabled={loading || (uploadType === "zip" ? !file : !githubUrl)}
-          className={`w-full rounded-md py-3 font-semibold transition ${
-            loading || (uploadType === "zip" ? !file : !githubUrl)
+          className={`w-full rounded-md py-3 font-semibold transition ${loading || (uploadType === "zip" ? !file : !githubUrl)
               ? "bg-neutral-700 text-gray-400 cursor-not-allowed"
               : "bg-white text-black hover:bg-gray-200"
-          }`}
+            }`}
         >
           {loading
             ? uploadType === "zip"
@@ -124,11 +121,10 @@ export default function UploadDashboard({
         {/* Status Message */}
         {message && (
           <div
-            className={`mt-6 rounded-md px-4 py-3 text-sm border ${
-              message.toLowerCase().includes("error")
+            className={`mt-6 rounded-md px-4 py-3 text-sm border ${message.toLowerCase().includes("error")
                 ? "border-red-900/40 bg-red-900/20 text-red-400"
                 : "border-green-900/40 bg-green-900/20 text-green-400"
-            }`}
+              }`}
           >
             {message}
           </div>

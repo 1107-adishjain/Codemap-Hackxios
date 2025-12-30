@@ -2,9 +2,9 @@
 import React, { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 
-const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), {
-  ssr: false,
-});
+// const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), {
+//   ssr: false,
+// });
 
 const COLORS = {
   File: "#60a5fa",      // blue

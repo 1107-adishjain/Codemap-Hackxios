@@ -1,13 +1,16 @@
 "use client";
+
 import { useRouter } from "next/navigation";
+import { useAuth } from "../app/context/Authcontext";
 
 export default function Navbar() {
   const router = useRouter();
+  const { auth, logout } = useAuth();
+  const email = typeof window !== 'undefined' ? localStorage.getItem('user_email') : null;
 
   return (
     <header className="fixed top-0 z-50 w-full bg-black/80 backdrop-blur border-b border-neutral-800">
       <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
-        
         {/* Brand */}
         <div
           onClick={() => router.push("/")}
@@ -27,25 +30,38 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
-          <button
-            onClick={() => router.push("/Login")}
-            className="text-gray-300 hover:text-white transition-colors"
-          >
-            Login
-          </button>
-
-          <button
-            onClick={() => router.push("/Signup")}
-            className="bg-white text-black px-5 py-2 rounded-md font-semibold
-                       hover:bg-gray-200 transition-all"
-          >
-            Get Started
-          </button>
+          {auth && auth.loggedIn ? (
+            <>
+              <span className="text-teal-300 font-semibold mr-2">{email || 'User'}</span>
+              <button
+                onClick={logout}
+                className="bg-red-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-red-600 transition-all"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => router.push("/Login")}
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => router.push("/Signup")}
+                className="bg-white text-black px-5 py-2 rounded-md font-semibold hover:bg-gray-200 transition-all"
+              >
+                Get Started
+              </button>
+            </>
+          )}
         </div>
       </div>
     </header>
   );
 }
+
 
 /* Reusable Nav Link */
 function NavLink({ label }) {
