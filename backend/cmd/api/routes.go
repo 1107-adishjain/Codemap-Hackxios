@@ -38,7 +38,16 @@ func (app *application) routes(db *sql.DB) http.Handler {
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(mw.Authenticate)
 		r.Get("/healthcheck", app.healthCheckHandler)
+		r.Post("/upload", app.uploadHandler)
+		r.Post("/github", app.githubHandler)
+		r.Post("/query", app.queryHandler)
 		
+		// New hierarchical graph endpoints
+		r.Get("/graph/summary", app.graphSummaryHandler)
+		r.Get("/graph/node", app.graphNodeDetailsHandler)
+		r.Get("/graph/files", app.graphFileHierarchyHandler)
+		r.Get("/graph/top-nodes", app.graphTopNodesHandler)
+		r.Get("/projects", app.listProjectsHandler)
 	})
 
 	return http.MaxBytesHandler(r, 300*1024*1024) 
